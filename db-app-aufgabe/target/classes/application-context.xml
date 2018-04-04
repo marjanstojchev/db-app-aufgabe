@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+	
+   		 <!-- Studenten -->
+    
+    <bean id="student1" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Marjan"/>
+    <property name="nachname" value="Stojchev"/>
+    <property name="studentId" value="1"/>
+        <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud1-phy"/>
+            <ref bean="stud1-math"/>
+        </set>
+    	</property>
+    </bean>
+    
+    <bean id="student2" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Dan"/>
+    <property name="nachname" value="Daniels"/>
+    <property name="studentId" value="2"/>
+        <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud2-phy"/>
+            <ref bean="stud2-math"/>
+        </set>
+    	</property>
+    </bean>
+    
+        <bean id="student3" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Alex"/>
+    <property name="nachname" value="Alexis"/>
+    <property name="studentId" value="3"/>
+       <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud3-oop"/>
+            <ref bean="stud3-mm"/>
+        </set>
+    	</property>
+    </bean>
+    
+    <bean id="student4" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Sami"/>
+    <property name="nachname" value="Schmelzer"/>
+    <property name="studentId" value="4"/>
+       <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud4-oop"/>
+            <ref bean="stud4-mm"/>
+        </set>
+    	</property>
+    </bean>
+    
+        <bean id="student5" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Mark"/>
+    <property name="nachname" value="Markus"/>
+    <property name="studentId" value="5"/>
+       <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud5-mm"/>
+            <ref bean="stud5-et"/>
+        </set>
+    	</property>
+    </bean>
+    
+    <bean id="student6" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Chris"/>
+    <property name="nachname" value="Christensen"/>
+    <property name="studentId" value="6"/>
+       <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud6-mm"/>
+            <ref bean="stud6-et"/>
+        </set>
+    	</property>
+    </bean>
+    
+    <bean id="student7" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Andreas"/>
+    <property name="nachname" value="Anderson"/>
+    <property name="studentId" value="7"/>
+       <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud7-et"/>
+            <ref bean="stud7-math"/>
+        </set>
+    	</property>
+    </bean>
+    
+    <bean id="student8" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Tom"/>
+    <property name="nachname" value="Thomas"/>
+    <property name="studentId" value="8"/>
+       <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud8-et"/>
+            <ref bean="stud8-math"/>
+        </set>
+    	</property>
+    </bean>
+    
+        <!-- Dozenten -->
+    
+    <bean id="dozent1" class="com.github.marjan87.db_app.bean.Dozent">
+    <property name="vorname" value="Albert"/>
+    <property name="nachname" value="Einstein"/>
+    <property name="dozentId" value="1"/>
+           <property name = "vorlesung">
+        <set value-type="com.github.marjan87.db_app.bean.Vorlesung">
+            <ref bean="mathematik"/>
+            <ref bean="oop"/>
+        </set>
+    	</property>
+    </bean>
+    
+    <bean id="dozent2" class="com.github.marjan87.db_app.bean.Dozent">
+    <property name="vorname" value="Nikola"/>
+    <property name="nachname" value="Tesla"/>
+    <property name="dozentId" value="2"/>
+         <property name = "vorlesung">
+        <set value-type="com.github.marjan87.db_app.bean.Vorlesung">
+            <ref bean="elektrotechnik"/>
+            <ref bean="physik"/>
+            <ref bean="multimedia"/>
+        </set>
+    	</property>
+    </bean>
+    
+        <!-- Vorlesungen -->
+    
+    <bean id="mathematik" class="com.github.marjan87.db_app.bean.Vorlesung">
+    <property name="vorlesungId" value="1"/>
+    <property name="titel" value="Mathematik"/>
+    <property name="dozent" ref="dozent1"/>
+     <property name = "teilnehmer">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud1-math"/>
+            <ref bean="stud2-math"/>
+             <ref bean="stud7-math"/>
+            <ref bean="stud8-math"/>
+        </set>
+    </property>
+    </bean>
+    
+     <bean id="physik" class="com.github.marjan87.db_app.bean.Vorlesung">
+    <property name="vorlesungId" value="2"/>
+    <property name="titel" value="Physik"/>
+        <property name="dozent" ref="dozent2"/>
+     <property name = "teilnehmer">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud1-phy"/>
+            <ref bean="stud2-phy"/>
+        </set>
+    </property>
+    </bean>
+    
+     <bean id="oop" class="com.github.marjan87.db_app.bean.Vorlesung">
+    <property name="vorlesungId" value="3"/>
+    <property name="titel" value="OOP"/>
+     <property name="dozent" ref="dozent1"/>
+     <property name = "teilnehmer">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud3-oop"/>
+            <ref bean="stud4-oop"/>
+        </set>
+    </property>
+    </bean>
+    
+      <bean id="multimedia" class="com.github.marjan87.db_app.bean.Vorlesung">
+    <property name="vorlesungId" value="4"/>
+    <property name="titel" value="Multimedia"/>
+      <property name="dozent" ref="dozent2"/>
+     <property name = "teilnehmer">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+          <ref bean="stud3-mm"/>
+            <ref bean="stud4-mm"/>
+            <ref bean="stud5-mm"/>
+            <ref bean="stud6-mm"/>
+        </set>
+    </property>
+    </bean>
+    
+      <bean id="elektrotechnik" class="com.github.marjan87.db_app.bean.Vorlesung">
+    <property name="vorlesungId" value="5"/>
+    <property name="titel" value="Elektrotechnik"/>
+     <property name="dozent" ref="dozent2"/>
+     <property name = "teilnehmer">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+         <ref bean="stud5-et"/>
+            <ref bean="stud6-et"/>
+            <ref bean="stud7-et"/>
+            <ref bean="stud8-et"/>
+        </set>
+    </property>
+    </bean>
+    
+        <!-- Teilnahme-->
+    	
+ 	<bean id="stud1-math" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student1"/>
+    <property name="vorlesung" ref="mathematik"/>
+    <property name="note" value="2"/>
+    </bean>
+    
+      <bean id="stud1-phy" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student1"/>
+    <property name="vorlesung" ref="physik"/>
+    <property name="note" value="2"/>
+    </bean>
+    
+    	<bean id="stud2-math" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student2"/>
+    <property name="vorlesung" ref="mathematik"/>
+    <property name="note" value="1"/>
+    </bean>
+    
+      <bean id="stud2-phy" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student2"/>
+    <property name="vorlesung" ref="physik"/>
+    <property name="note" value="1"/>
+    </bean>
+      
+     <bean id="stud3-oop" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student3"/>
+    <property name="vorlesung" ref="oop"/>
+    <property name="note" value="3"/>
+    </bean>
+    
+      <bean id="stud3-mm" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student3"/>
+    <property name="vorlesung" ref="multimedia"/>
+    <property name="note" value="2"/>
+    </bean>
+    
+       <bean id="stud4-oop" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student4"/>
+    <property name="vorlesung" ref="oop"/>
+    <property name="note" value="3"/>
+    </bean>
+    
+      <bean id="stud4-mm" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student4"/>
+    <property name="vorlesung" ref="multimedia"/>
+    <property name="note" value="1"/>
+    </bean>
+	
+	<bean id="stud5-mm" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student5"/>
+    <property name="vorlesung" ref="multimedia"/>
+    <property name="note" value="3"/>
+    </bean>
+    
+    <bean id="stud5-et" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student5"/>
+    <property name="vorlesung" ref="elektrotechnik"/>
+    <property name="note" value="1"/>
+    </bean>
+    
+       <bean id="stud6-mm" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student6"/>
+    <property name="vorlesung" ref="multimedia"/>
+    <property name="note" value="3"/>
+    </bean>
+    
+         <bean id="stud6-et" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student6"/>
+    <property name="vorlesung" ref="elektrotechnik"/>
+    <property name="note" value="4"/>
+    </bean>
+    
+    <bean id="stud7-et" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student7"/>
+    <property name="vorlesung" ref="elektrotechnik"/>
+    <property name="note" value="3"/>
+    </bean>
+    
+    <bean id="stud7-math" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student7"/>
+    <property name="vorlesung" ref="mathematik"/>
+    <property name="note" value="3"/>
+    </bean>
+    
+       <bean id="stud8-et" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student8"/>
+    <property name="vorlesung" ref="elektrotechnik"/>
+    <property name="note" value="3"/>
+    </bean>
+    
+     <bean id="stud8-math" class="com.github.marjan87.db_app.bean.Teilnahme">
+    <property name="student" ref="student8"/>
+    <property name="vorlesung" ref="mathematik"/>
+    <property name="note" value="2"/>
+    </bean>
+
+ 	<bean id="newStudent1" class="com.github.marjan87.db_app.bean.Student">
+    <property name="vorname" value="Janko"/>
+    <property name="nachname" value="Janic"/>
+    <property name="studentId" value="1"/>
+        <property name = "teilnahme">
+        <set value-type="com.github.marjan87.db_app.bean.Teilnahme">
+            <ref bean="stud1-phy"/>
+            <ref bean="stud1-math"/>
+        </set>
+    	</property>
+    </bean>
+
+
+   <bean id="newDozent2" class="com.github.marjan87.db_app.bean.Dozent">
+    <property name="vorname" value="Graham"/>
+    <property name="nachname" value="Bell"/>
+    <property name="dozentId" value="2"/>
+         <property name = "vorlesung">
+        <set value-type="com.github.marjan87.db_app.bean.Vorlesung">
+            <ref bean="elektrotechnik"/>
+            <ref bean="physik"/>
+            <ref bean="multimedia"/>
+        </set>
+    	</property>
+    </bean>
+
+</beans>
+

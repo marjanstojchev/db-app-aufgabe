@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "Select">
+<select id="avgNote" resultType="map">
+SELECT Student.StudentId, AVG(Teilnahme.Note) FROM Student
+inner join Teilnahme ON Student.StudentId = Teilnahme.StudentId group by Student.StudentId;
+</select>
+
+<select id="teilnehmerDoz" resultType="map"> select DozentId, count(StudentId) 
+   from Teilnahme left join vorlesung on teilnahme.VorlesungId=Vorlesung.VorlesungId
+  group by vorlesung.DozentId </select>
+  
+</mapper>
